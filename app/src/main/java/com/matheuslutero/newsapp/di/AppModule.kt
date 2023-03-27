@@ -30,7 +30,8 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(): NewsRepository = NewsRepositoryImpl()
+    fun provideRepository(service: ApiService): NewsRepository =
+        NewsRepositoryImpl(service)
 
     @Singleton
     @Provides
