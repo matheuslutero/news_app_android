@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import coil.load
 import com.matheuslutero.newsapp.R
+import com.matheuslutero.newsapp.core.extension.toTimeSpanString
 import com.matheuslutero.newsapp.databinding.ArticleDetailFragmentBinding
 
 class ArticleDetailFragment : Fragment(R.layout.article_detail_fragment) {
@@ -43,7 +44,7 @@ class ArticleDetailFragment : Fragment(R.layout.article_detail_fragment) {
             }
             with(binding.publishedAtTextView) {
                 isGone = publishedAt == null
-                text = publishedAt?.toString()
+                text = publishedAt?.toTimeSpanString(context)
             }
             with(binding.descriptionTextView) {
                 isGone = description.isNullOrBlank()
