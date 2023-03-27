@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.matheuslutero.newsapp.core.extension.toTimeSpanString
 import com.matheuslutero.newsapp.core.model.Article
 import com.matheuslutero.newsapp.databinding.ArticlesItemLayoutBinding
 
@@ -44,7 +45,7 @@ class ArticlesAdapter : ListAdapter<Article, ArticlesAdapter.ViewHolder>(diffCal
         holder.binding.apply {
             holder.itemView.apply {
                 titleTextView.text = article?.title
-                publishedAtTextView.text = article?.publishedAt?.toString()
+                publishedAtTextView.text = article?.publishedAt?.toTimeSpanString(context)
 
                 articleImageView.load(article?.urlToImage) {
                     crossfade(true)
