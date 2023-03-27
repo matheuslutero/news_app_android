@@ -3,8 +3,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
-    app:startDestination="@id/articlesFragment">
+    app:startDestination="@id/authenticationFragment">
 
+    <fragment
+        android:id="@+id/authenticationFragment"
+        android:name="com.matheuslutero.newsapp.ui.auth.AuthenticationFragment"
+        android:label=""
+        tools:layout="@layout/authentication_fragment">
+        <action
+            android:id="@+id/action_authenticationFragment_to_articlesFragment"
+            app:destination="@id/articlesFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/articlesFragment"
         android:name="com.matheuslutero.newsapp.ui.list.ArticlesFragment"

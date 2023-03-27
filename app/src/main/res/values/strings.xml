@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">News App</string>
+    <string name="authentication_description">Authentication required, please sign in with your biometrics</string>
+    <string name="authentication_sign_in">Sign in</string>
+    <string name="biometric_title">Biometric authentication</string>
+    <string name="biometric_subtitle">Confirm your biometric to proceed</string>
     <string name="retry_description">Uh-oh! Something went wrong.\nPlease check your connection and try again.</string>
     <string name="retry_button">Retry</string>
+    <string name="cancel_button">Cancel</string>
 </resources>
