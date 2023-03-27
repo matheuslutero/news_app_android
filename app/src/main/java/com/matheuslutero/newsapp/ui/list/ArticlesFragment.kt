@@ -43,10 +43,12 @@ class ArticlesFragment : Fragment(R.layout.articles_fragment) {
                 Resource.Status.Failure -> {
                     binding.container.isVisible = false
                     binding.container.isRefreshing = false
+                    binding.error.root.isVisible = true
                 }
                 Resource.Status.Loading -> {
                     binding.container.isVisible = true
                     binding.container.isRefreshing = true
+                    binding.error.root.isVisible = false
                 }
             }
         }
@@ -65,6 +67,9 @@ class ArticlesFragment : Fragment(R.layout.articles_fragment) {
 
     private fun configListeners() {
         binding.container.setOnRefreshListener {
+            viewModel.fetchTopHeadLines()
+        }
+        binding.error.retryButton.setOnClickListener {
             viewModel.fetchTopHeadLines()
         }
     }
