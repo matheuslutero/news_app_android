@@ -9,11 +9,14 @@ import com.matheuslutero.newsapp.core.model.Article
 import com.matheuslutero.newsapp.core.model.Resource
 import com.matheuslutero.newsapp.core.model.setLoading
 import com.matheuslutero.newsapp.core.repository.NewsRepository
-import com.matheuslutero.newsapp.core.repository.NewsRepositoryImpl
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.launch
 
-class ArticlesViewModel : ViewModel() {
-    private val repository: NewsRepository = NewsRepositoryImpl()
+@HiltViewModel
+class ArticlesViewModel @Inject constructor(
+    private val repository: NewsRepository
+) : ViewModel() {
 
     private var _listData = MutableLiveData<Resource<List<Article>>>()
     val listData: LiveData<Resource<List<Article>>> = _listData

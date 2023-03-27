@@ -12,7 +12,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.matheuslutero.newsapp.R
 import com.matheuslutero.newsapp.core.model.Resource
 import com.matheuslutero.newsapp.databinding.ArticlesFragmentBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ArticlesFragment : Fragment(R.layout.articles_fragment) {
 
     private val viewModel: ArticlesViewModel by viewModels()
