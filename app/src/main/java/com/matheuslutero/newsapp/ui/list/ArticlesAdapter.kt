@@ -2,6 +2,7 @@ package com.matheuslutero.newsapp.ui.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -48,6 +49,14 @@ class ArticlesAdapter : ListAdapter<Article, ArticlesAdapter.ViewHolder>(diffCal
                 articleImageView.load(article?.urlToImage) {
                     crossfade(true)
                     crossfade(800)
+                }
+
+                setOnClickListener {
+                    Navigation.findNavController(it).navigate(
+                        ArticlesFragmentDirections.actionArticlesFragmentToArticleDetailFragment(
+                            article
+                        )
+                    )
                 }
             }
         }

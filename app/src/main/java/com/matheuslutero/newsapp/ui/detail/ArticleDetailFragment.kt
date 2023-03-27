@@ -5,14 +5,14 @@ import android.view.View
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import coil.load
 import com.matheuslutero.newsapp.R
-import com.matheuslutero.newsapp.core.model.Article
 import com.matheuslutero.newsapp.databinding.ArticleDetailFragmentBinding
-import java.util.Date
 
 class ArticleDetailFragment : Fragment(R.layout.article_detail_fragment) {
 
+    private val args: ArticleDetailFragmentArgs by navArgs()
     private val viewModel: ArticleDetailViewModel by viewModels()
 
     private lateinit var binding: ArticleDetailFragmentBinding
@@ -28,15 +28,7 @@ class ArticleDetailFragment : Fragment(R.layout.article_detail_fragment) {
     }
 
     private fun initViewModel() {
-        viewModel.init(
-            Article(
-                title = "title",
-                urlToImage = "https://picsum.photos/400",
-                publishedAt = Date(),
-                description = "description",
-                content = "content"
-            )
-        )
+        viewModel.init(args.article)
     }
 
     private fun configViews() {
