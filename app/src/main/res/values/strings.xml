@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">News App</string>
     <string name="authentication_description">Authentication required, please sign in with your biometrics</string>
     <string name="authentication_sign_in">Sign in</string>
     <string name="biometric_title">Biometric authentication</string>
