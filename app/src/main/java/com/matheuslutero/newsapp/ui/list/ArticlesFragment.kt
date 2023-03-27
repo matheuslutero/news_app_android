@@ -3,19 +3,19 @@ package com.matheuslutero.newsapp.ui.list
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.matheuslutero.newsapp.R
-import com.matheuslutero.newsapp.core.model.Article
+import com.matheuslutero.newsapp.core.model.Resource
 import com.matheuslutero.newsapp.databinding.ArticlesFragmentBinding
-import java.util.Date
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class ArticlesFragment : Fragment(R.layout.articles_fragment) {
+
+    private val viewModel: ArticlesViewModel by viewModels()
 
     private lateinit var binding: ArticlesFragmentBinding
     private lateinit var adapter: ArticlesAdapter
@@ -25,8 +25,29 @@ class ArticlesFragment : Fragment(R.layout.articles_fragment) {
         super.onViewCreated(view, savedInstanceState)
         binding = ArticlesFragmentBinding.bind(view)
 
+        initViewModel()
         configRecyclerView()
         configListeners()
+    }
+
+    private fun initViewModel() {
+        viewModel.listData.observe(viewLifecycleOwner) {
+            when (it.status) {
+                Resource.Status.Success -> {
+                    binding.container.isVisible = true
+                    binding.container.isRefreshing = false
+                    adapter.submitList(it.data)
+                }
+                Resource.Status.Failure -> {
+                    binding.container.isVisible = false
+                    binding.container.isRefreshing = false
+                }
+                Resource.Status.Loading -> {
+                    binding.container.isVisible = true
+                    binding.container.isRefreshing = true
+                }
+            }
+        }
     }
 
     private fun configRecyclerView() {
@@ -42,35 +63,7 @@ class ArticlesFragment : Fragment(R.layout.articles_fragment) {
 
     private fun configListeners() {
         binding.container.setOnRefreshListener {
-            fetchTopHeadLines()
-        }
-    }
-
-    private fun fetchTopHeadLines() {
-        val articles = listOf(
-            Article(
-                title = "Article 1",
-                description = "Description 1",
-                content = "content",
-                url = "https://www.google.com",
-                urlToImage = "https://picsum.photos/400",
-                publishedAt = Date(),
-            ),
-            Article(
-                title = "Article 2",
-                description = "Description 2",
-                content = "content",
-                url = "https://www.google.com",
-                urlToImage = "https://picsum.photos/400",
-                publishedAt = Date(),
-            ),
-        )
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            binding.container.isRefreshing = true
-            delay(2000)
-            binding.container.isRefreshing = false
-            adapter.submitList(articles)
+            viewModel.fetchTopHeadLines()
         }
     }
 }
