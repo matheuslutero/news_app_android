@@ -23,4 +23,9 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <include
+        android:id="@+id/error"
+        layout="@layout/retry_layout"
+        android:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
