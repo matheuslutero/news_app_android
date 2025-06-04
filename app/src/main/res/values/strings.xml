@@ -7,6 +7,7 @@
     <string name="retry_button">Retry</string>
     <string name="cancel_button">Cancel</string>
     <string name="time_just_now">"Just now"</string>
+    <string name="back">Back</string>
     <plurals name="time_minutes_ago">
         <item quantity="one">%d minute ago</item>
         <item quantity="other">%d minutes ago</item>
