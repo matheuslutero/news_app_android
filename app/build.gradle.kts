@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.ksp)
     alias(libs.plugins.navigation.safeargs)
@@ -83,6 +84,7 @@ android {
 dependencies {
     // Coil
     implementation(libs.coil)
+    implementation(libs.coil.compose)
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.core)
@@ -90,6 +92,7 @@ dependencies {
 
     // Dagger Hilt
     implementation(libs.hilt.android)
+    implementation(libs.hilt.navigation.compose)
     ksp(libs.hilt.android.compiler)
 
     // JUnit
@@ -115,10 +118,13 @@ dependencies {
     testImplementation(libs.truth)
 
     // Android
+    implementation(libs.androidx.activity.compose)
     implementation(libs.activity.ktx)
     implementation(libs.appcompat)
     implementation(libs.biometric)
     implementation(libs.biometric.ktx)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.legacy.support.v4)
