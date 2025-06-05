@@ -1,7 +1,7 @@
 package com.matheuslutero.newsapp.article.data.repository
 
-import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
-import com.matheuslutero.newsapp.article.data.remote.dto.toArticle
+import com.matheuslutero.newsapp.article.data.dto.toArticle
+import com.matheuslutero.newsapp.article.data.network.ArticleRemoteService
 import com.matheuslutero.newsapp.article.domain.model.Article
 import com.matheuslutero.newsapp.article.domain.repository.ArticleRepository
 import com.matheuslutero.newsapp.core.util.Result
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class ArticleRepositoryImpl @Inject constructor(
-    private val service: ArticleApiService
+    private val service: ArticleRemoteService
 ) : ArticleRepository {
     override suspend fun getTopHeadlines(sources: String): Flow<Result<List<Article>>> = flow {
         try {

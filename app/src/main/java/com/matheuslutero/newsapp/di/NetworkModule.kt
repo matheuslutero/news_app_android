@@ -1,8 +1,8 @@
 package com.matheuslutero.newsapp.di
 
 import com.matheuslutero.newsapp.BuildConfig
-import com.matheuslutero.newsapp.article.data.remote.api.ApiKeyInterceptor
-import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
+import com.matheuslutero.newsapp.article.data.network.ArticleRemoteService
+import com.matheuslutero.newsapp.article.data.network.AuthenticationInterceptor
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -35,7 +35,7 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(ApiKeyInterceptor(BuildConfig.API_KEY))
+            .addInterceptor(AuthenticationInterceptor(BuildConfig.API_KEY))
             .addInterceptor(HttpLoggingInterceptor().setLevel(Level.BODY))
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
@@ -57,7 +57,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideNewsApiService(retrofit: Retrofit): ArticleApiService {
-        return retrofit.create(ArticleApiService::class.java)
+    fun provideNewsApiService(retrofit: Retrofit): ArticleRemoteService {
+        return retrofit.create(ArticleRemoteService::class.java)
     }
 }

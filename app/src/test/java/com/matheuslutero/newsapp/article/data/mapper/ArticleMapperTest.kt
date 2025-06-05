@@ -1,8 +1,8 @@
 package com.matheuslutero.newsapp.article.data.mapper
 
 import com.google.common.truth.Truth.assertThat
-import com.matheuslutero.newsapp.article.data.remote.dto.ArticleDto
-import com.matheuslutero.newsapp.article.data.remote.dto.toArticle
+import com.matheuslutero.newsapp.article.data.dto.ArticleDto
+import com.matheuslutero.newsapp.article.data.dto.toArticle
 import org.junit.Test
 import java.util.Date
 

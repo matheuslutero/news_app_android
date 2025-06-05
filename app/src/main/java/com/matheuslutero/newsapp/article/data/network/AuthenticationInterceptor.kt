@@ -1,9 +1,9 @@
-package com.matheuslutero.newsapp.article.data.remote.api
+package com.matheuslutero.newsapp.article.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class ApiKeyInterceptor(
+class AuthenticationInterceptor(
     private val apiKey: String
 ) : Interceptor {
 

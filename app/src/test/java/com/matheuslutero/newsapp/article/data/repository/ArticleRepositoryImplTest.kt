@@ -1,9 +1,9 @@
 package com.matheuslutero.newsapp.article.data.repository
 
 import com.google.common.truth.Truth.assertThat
-import com.matheuslutero.newsapp.article.data.remote.dto.ArticleDto
-import com.matheuslutero.newsapp.article.data.remote.dto.ArticlesResponseDto
-import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
+import com.matheuslutero.newsapp.article.data.dto.ArticleDto
+import com.matheuslutero.newsapp.article.data.dto.ArticlesResponseDto
+import com.matheuslutero.newsapp.article.data.network.ArticleRemoteService
 import com.matheuslutero.newsapp.core.util.Result
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
@@ -22,7 +22,7 @@ import java.util.Date
 class ArticleRepositoryImplTest {
 
     @Mock
-    private lateinit var mockArticleApiService: ArticleApiService
+    private lateinit var mockArticleRemoteService: ArticleRemoteService
 
     private lateinit var repository: ArticleRepositoryImpl
 
@@ -32,7 +32,7 @@ class ArticleRepositoryImplTest {
 
     @Before
     fun setUp() {
-        repository = ArticleRepositoryImpl(mockArticleApiService)
+        repository = ArticleRepositoryImpl(mockArticleRemoteService)
     }
 
     @Test
@@ -42,7 +42,7 @@ class ArticleRepositoryImplTest {
             totalResults = 0,
             articles = emptyList()
         )
-        whenever(mockArticleApiService.getTopHeadlines(TEST_SOURCES))
+        whenever(mockArticleRemoteService.getTopHeadlines(TEST_SOURCES))
             .thenReturn(articlesResponseDto)
 
         // When
@@ -76,7 +76,7 @@ class ArticleRepositoryImplTest {
             articles = listOf(firstArticle, secondArticle, thirdArticle)
         )
 
-        whenever(mockArticleApiService.getTopHeadlines(TEST_SOURCES))
+        whenever(mockArticleRemoteService.getTopHeadlines(TEST_SOURCES))
             .thenReturn(articlesResponseDto)
 
         // When
@@ -98,7 +98,7 @@ class ArticleRepositoryImplTest {
     @Test
     fun `getTopHeadlines should emit Error when exception occurs`() = runTest {
         // Given
-        whenever(mockArticleApiService.getTopHeadlines(TEST_SOURCES))
+        whenever(mockArticleRemoteService.getTopHeadlines(TEST_SOURCES))
             .thenThrow(MockitoException("Network error"))
 
         // When

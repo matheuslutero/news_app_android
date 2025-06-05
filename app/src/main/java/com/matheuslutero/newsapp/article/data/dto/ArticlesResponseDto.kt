@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.article.data.remote.dto
+package com.matheuslutero.newsapp.article.data.dto
 
 data class ArticlesResponseDto(
     val totalResults: Int,

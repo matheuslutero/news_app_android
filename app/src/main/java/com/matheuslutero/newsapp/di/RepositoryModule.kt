@@ -1,8 +1,8 @@
 package com.matheuslutero.newsapp.di
 
+import com.matheuslutero.newsapp.article.data.network.ArticleRemoteService
 import com.matheuslutero.newsapp.article.data.repository.ArticleRepositoryImpl
 import com.matheuslutero.newsapp.article.domain.repository.ArticleRepository
-import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 object RepositoryModule {
     @Provides
     @Singleton
-    fun provideNewsRepository(service: ArticleApiService): ArticleRepository {
+    fun provideNewsRepository(service: ArticleRemoteService): ArticleRepository {
         return ArticleRepositoryImpl(service)
     }
 }
