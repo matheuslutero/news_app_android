@@ -35,7 +35,7 @@ fun ArticleListScreen(
     onArticleClick: (Article) -> Unit = {},
     viewModel: ArticleListViewModel = hiltViewModel()
 ) {
-    val state by viewModel.listData.collectAsStateWithLifecycle()
+    val state by viewModel.stateFlow.collectAsStateWithLifecycle()
 
     Scaffold(
         topBar = {
