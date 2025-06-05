@@ -114,6 +114,9 @@ dependencies {
     // Truth
     testImplementation(libs.truth)
 
+    // Turbine
+    testImplementation(libs.turbine)
+
     // Android
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.biometric)

@@ -18,6 +18,7 @@ navigationCompose = "2.9.0"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 truth = "1.4.4"
+turbine = "1.1.0"
 uiTooling = "1.8.2"
 
 [libraries]
@@ -46,6 +47,7 @@ moshi-adapters = { module = "com.squareup.moshi:moshi-adapters", version.ref = "
 moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 truth = { module = "com.google.truth:truth", version.ref = "truth" }
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
