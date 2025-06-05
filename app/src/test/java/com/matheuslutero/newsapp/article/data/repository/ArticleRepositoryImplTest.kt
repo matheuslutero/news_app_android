@@ -5,126 +5,82 @@ import com.matheuslutero.newsapp.article.data.dto.ArticleDto
 import com.matheuslutero.newsapp.article.data.dto.ArticlesResponseDto
 import com.matheuslutero.newsapp.article.data.dto.toArticle
 import com.matheuslutero.newsapp.article.data.network.ArticleRemoteService
-import com.matheuslutero.newsapp.core.util.Result
-import kotlinx.coroutines.flow.toList
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.Mock
-import org.mockito.exceptions.base.MockitoException
-import org.mockito.junit.MockitoJUnitRunner
-import org.mockito.kotlin.whenever
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.Date
 
-@RunWith(MockitoJUnitRunner::class)
 class ArticleRepositoryImplTest {
 
-    @Mock
-    private lateinit var mockArticleRemoteService: ArticleRemoteService
-
-    private lateinit var repository: ArticleRepositoryImpl
-
+    // Constants
     companion object {
-        private const val TEST_SOURCES = "bbc-news"
+        private const val NEWS_SOURCE = "test-source"
+        private const val ERROR_MESSAGE = "Unexpected error"
     }
 
+    // Test subject & dependencies
+    private lateinit var repository: ArticleRepositoryImpl
+    private lateinit var mockService: ArticleRemoteService
+
+    // Setup
     @Before
     fun setUp() {
-        repository = ArticleRepositoryImpl(mockArticleRemoteService)
+        mockService = mockk()
+        repository = ArticleRepositoryImpl(mockService)
     }
 
+    // Tests
     @Test
-    fun `getTopHeadlines should emit Loading first when called`() = runTest {
-        // Given
-        val articlesResponseDto = ArticlesResponseDto(
-            totalResults = 0,
-            articles = emptyList()
-        )
-        whenever(mockArticleRemoteService.getTopHeadlines(TEST_SOURCES))
-            .thenReturn(articlesResponseDto)
-
-        // When
-        val results = repository.getTopHeadlines(TEST_SOURCES).toList()
-
-        // Then
-        assertThat(results).hasSize(2)
-        assertThat(results[0]).isInstanceOf(Result.Loading::class.java)
-        assertThat(results[1]).isInstanceOf(Result.Success::class.java)
-    }
-
-    @Test
-    fun `getTopHeadlines should emit Success with sorted articles when succeeds`() = runTest {
+    fun `getTopHeadlines returns articles sorted by date descending`() = runTest {
         // Given
         val now = Instant.now()
-        val firstArticle = createArticleDto(
-            title = "First Article",
-            publishedAt = Date.from(now.minus(1, ChronoUnit.HOURS))
-        )
-        val secondArticle = createArticleDto(
-            title = "Second Article",
-            publishedAt = Date.from(now.minus(2, ChronoUnit.HOURS))
-        )
-        val thirdArticle = createArticleDto(
-            title = "Third Article",
-            publishedAt = Date.from(now)
-        )
 
-        val articlesResponseDto = ArticlesResponseDto(
+        val firstArticle = ArticleDto(publishedAt = Date.from(now.minus(1, ChronoUnit.HOURS)))
+        val secondArticle = ArticleDto(publishedAt = Date.from(now.minus(2, ChronoUnit.HOURS)))
+        val latestArticle = ArticleDto(publishedAt = Date.from(now))
+
+        val response = ArticlesResponseDto(
             totalResults = 3,
-            articles = listOf(firstArticle, secondArticle, thirdArticle)
+            articles = listOf(firstArticle, secondArticle, latestArticle)
         )
 
-        whenever(mockArticleRemoteService.getTopHeadlines(TEST_SOURCES))
-            .thenReturn(articlesResponseDto)
+        coEvery { mockService.getTopHeadlines(NEWS_SOURCE) } returns response
 
         // When
-        val result = repository.getTopHeadlines(TEST_SOURCES).toList().last()
+        val result = repository.getTopHeadlines(NEWS_SOURCE)
 
         // Then
-        assertThat(result).isInstanceOf(Result.Success::class.java)
-        val successResult = result as Result.Success
-        assertThat(successResult.data).isNotNull()
-        assertThat(successResult.data).hasSize(3)
+        coVerify { mockService.getTopHeadlines(NEWS_SOURCE) }
 
-        // Verify articles are sorted by publishedAt in descending order (newest first)
-        val sortedArticles = successResult.data!!
-        assertThat(sortedArticles[0]).isEqualTo(thirdArticle.toArticle())
-        assertThat(sortedArticles[1]).isEqualTo(firstArticle.toArticle())
-        assertThat(sortedArticles[2]).isEqualTo(secondArticle.toArticle())
+        assertThat(result.isSuccess).isTrue()
+
+        val articles = result.getOrThrow()
+        assertThat(articles).hasSize(3)
+
+        // Verify articles are correctly sorted by publishedAt (newest first)
+        assertThat(articles[0]).isEqualTo(latestArticle.toArticle())
+        assertThat(articles[1]).isEqualTo(firstArticle.toArticle())
+        assertThat(articles[2]).isEqualTo(secondArticle.toArticle())
     }
 
     @Test
-    fun `getTopHeadlines should emit Error when exception occurs`() = runTest {
+    fun `getTopHeadlines returns failure when service throws exception`() = runTest {
         // Given
-        whenever(mockArticleRemoteService.getTopHeadlines(TEST_SOURCES))
-            .thenThrow(MockitoException("Network error"))
+        val exception = RuntimeException(ERROR_MESSAGE)
+        coEvery { mockService.getTopHeadlines(NEWS_SOURCE) } throws exception
 
         // When
-        val result = repository.getTopHeadlines(TEST_SOURCES).toList().last()
+        val result = repository.getTopHeadlines(NEWS_SOURCE)
 
         // Then
-        assertThat(result).isInstanceOf(Result.Error::class.java)
-        val errorResult = result as Result.Error
-        assertThat(errorResult.message).isNotNull()
-        assertThat(errorResult.data).isNull()
-    }
+        coVerify { mockService.getTopHeadlines(NEWS_SOURCE) }
 
-    private fun createArticleDto(
-        title: String = "Default Title",
-        description: String = "Default Description",
-        content: String = "Default Content",
-        urlToImage: String = "https://default-image.com",
-        publishedAt: Date? = Date()
-    ): ArticleDto {
-        return ArticleDto(
-            title = title,
-            description = description,
-            content = content,
-            urlToImage = urlToImage,
-            publishedAt = publishedAt
-        )
+        assertThat(result.isFailure).isTrue()
+        assertThat(result.exceptionOrNull()).isSameInstanceAs(exception)
     }
 }

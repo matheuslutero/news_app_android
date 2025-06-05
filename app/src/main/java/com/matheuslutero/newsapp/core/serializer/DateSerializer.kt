@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.core.util
+package com.matheuslutero.newsapp.core.serializer
 
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.descriptors.PrimitiveKind

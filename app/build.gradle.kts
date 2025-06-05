@@ -100,9 +100,8 @@ dependencies {
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
 
-    // Mockito
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.kotlin)
+    // Mockk
+    testImplementation(libs.mockk)
 
     // Retrofit
     implementation(libs.retrofit)
