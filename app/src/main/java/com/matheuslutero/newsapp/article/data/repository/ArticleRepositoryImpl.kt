@@ -2,9 +2,9 @@ package com.matheuslutero.newsapp.article.data.repository
 
 import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
 import com.matheuslutero.newsapp.article.data.remote.dto.toArticle
-import com.matheuslutero.newsapp.article.domain.Result
 import com.matheuslutero.newsapp.article.domain.model.Article
 import com.matheuslutero.newsapp.article.domain.repository.ArticleRepository
+import com.matheuslutero.newsapp.core.util.Result
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

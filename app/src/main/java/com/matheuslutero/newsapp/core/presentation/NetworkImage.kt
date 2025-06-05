@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.article.presentation.common
+package com.matheuslutero.newsapp.core.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier

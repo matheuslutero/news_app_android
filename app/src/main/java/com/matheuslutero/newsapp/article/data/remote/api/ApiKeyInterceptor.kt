@@ -3,7 +3,7 @@ package com.matheuslutero.newsapp.article.data.remote.api
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class ArticleApiKeyInterceptor(
+class ApiKeyInterceptor(
     private val apiKey: String
 ) : Interceptor {
 

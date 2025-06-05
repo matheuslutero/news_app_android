@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.matheuslutero.newsapp.BuildConfig
 import com.matheuslutero.newsapp.article.domain.repository.ArticleRepository
-import com.matheuslutero.newsapp.article.domain.Result
+import com.matheuslutero.newsapp.core.util.Result
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

@@ -1,3 +1,3 @@
-package com.matheuslutero.newsapp.article.presentation.common
+package com.matheuslutero.newsapp.core.extension
 
 fun String.sanitize() = replace(Regex("\\[\\+\\d+ chars]"), "")

@@ -4,7 +4,7 @@ import com.google.common.truth.Truth.assertThat
 import com.matheuslutero.newsapp.article.data.remote.dto.ArticleDto
 import com.matheuslutero.newsapp.article.data.remote.dto.ArticlesResponseDto
 import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
-import com.matheuslutero.newsapp.article.domain.Result
+import com.matheuslutero.newsapp.core.util.Result
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import org.junit.Before

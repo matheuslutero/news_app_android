@@ -1,7 +1,7 @@
 package com.matheuslutero.newsapp.di
 
 import com.matheuslutero.newsapp.BuildConfig
-import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiKeyInterceptor
+import com.matheuslutero.newsapp.article.data.remote.api.ApiKeyInterceptor
 import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
@@ -10,7 +10,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.logging.HttpLoggingInterceptor.Level
@@ -18,6 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.Date
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -35,7 +35,7 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor(ArticleApiKeyInterceptor(BuildConfig.API_KEY))
+            .addInterceptor(ApiKeyInterceptor(BuildConfig.API_KEY))
             .addInterceptor(HttpLoggingInterceptor().setLevel(Level.BODY))
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)

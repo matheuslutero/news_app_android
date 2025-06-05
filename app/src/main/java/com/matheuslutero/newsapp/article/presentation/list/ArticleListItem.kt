@@ -18,8 +18,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import com.matheuslutero.newsapp.article.domain.model.Article
-import com.matheuslutero.newsapp.article.presentation.common.toTimeSpanString
-import com.matheuslutero.newsapp.article.presentation.common.NetworkImage
+import com.matheuslutero.newsapp.core.extension.toTimeSpanString
+import com.matheuslutero.newsapp.core.presentation.NetworkImage
 
 @Composable
 fun ArticlesListItem(

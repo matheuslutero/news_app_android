@@ -28,9 +28,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.matheuslutero.newsapp.R
 import com.matheuslutero.newsapp.article.domain.model.Article
-import com.matheuslutero.newsapp.article.presentation.common.sanitize
-import com.matheuslutero.newsapp.article.presentation.common.toTimeSpanString
-import com.matheuslutero.newsapp.article.presentation.common.NetworkImage
+import com.matheuslutero.newsapp.core.extension.sanitize
+import com.matheuslutero.newsapp.core.extension.toTimeSpanString
+import com.matheuslutero.newsapp.core.presentation.NetworkImage
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.article.presentation.common
+package com.matheuslutero.newsapp.core.extension
 
 import android.text.format.DateUtils
 import java.util.Date
