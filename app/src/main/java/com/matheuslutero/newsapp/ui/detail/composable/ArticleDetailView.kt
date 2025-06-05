@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.ui.detail
+package com.matheuslutero.newsapp.ui.detail.composable
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.matheuslutero.newsapp.R
-import com.matheuslutero.newsapp.ui.theme.NewsAppTheme
+import com.matheuslutero.newsapp.ui.core.theme.NewsAppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.ui.detail
+package com.matheuslutero.newsapp.ui.detail.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.matheuslutero.newsapp.core.model.Article

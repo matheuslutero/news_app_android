@@ -6,6 +6,7 @@ import com.google.common.truth.Truth
 import com.matheuslutero.newsapp.core.model.Article
 import com.matheuslutero.newsapp.core.model.Resource
 import com.matheuslutero.newsapp.core.repository.NewsRepository
+import com.matheuslutero.newsapp.ui.list.viewmodel.ArticlesViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher

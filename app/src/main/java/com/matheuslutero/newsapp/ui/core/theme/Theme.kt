@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.ui.theme
+package com.matheuslutero.newsapp.ui.core.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

@@ -20,6 +20,7 @@ legacySupportV4 = "1.0.0"
 lifecycleViewmodelKtx = "2.9.0"
 loggingInterceptor = "4.12.0"
 material = "1.12.0"
+materialIconsExtended = "1.7.8"
 mockitoCore = "5.8.0"
 mockitoKotlin = "5.2.1"
 moshiAdapters = "1.15.1"
@@ -29,7 +30,6 @@ navigationUiKtx = "2.9.0"
 retrofit = "2.11.0"
 swiperefreshlayout = "1.1.0"
 truth = "1.4.4"
-uiToolingPreviewAndroid = "1.8.2"
 uiTooling = "1.8.2"
 
 [libraries]
@@ -41,6 +41,7 @@ androidx-core-testing = { module = "androidx.arch.core:core-testing", version.re
 androidx-legacy-support-v4 = { module = "androidx.legacy:legacy-support-v4", version.ref = "legacySupportV4" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsExtended" }
 androidx-swiperefreshlayout = { module = "androidx.swiperefreshlayout:swiperefreshlayout", version.ref = "swiperefreshlayout" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationUiKtx" }

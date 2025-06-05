@@ -2,6 +2,7 @@ package com.matheuslutero.newsapp.ui.detail
 
 import com.google.common.truth.Truth
 import com.matheuslutero.newsapp.core.model.Article
+import com.matheuslutero.newsapp.ui.detail.viewmodel.ArticleDetailViewModel
 import java.util.Date
 import org.junit.Before
 import org.junit.Test

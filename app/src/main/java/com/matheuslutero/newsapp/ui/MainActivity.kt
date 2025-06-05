@@ -8,9 +8,9 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.matheuslutero.newsapp.ui.theme.NewsAppTheme
-import com.matheuslutero.newsapp.ui.detail.ArticleDetailView
-import com.matheuslutero.newsapp.ui.list.ArticlesView
+import com.matheuslutero.newsapp.ui.core.theme.NewsAppTheme
+import com.matheuslutero.newsapp.ui.detail.composable.ArticleDetailView
+import com.matheuslutero.newsapp.ui.list.composable.ArticlesView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.serialization.Serializable
 
