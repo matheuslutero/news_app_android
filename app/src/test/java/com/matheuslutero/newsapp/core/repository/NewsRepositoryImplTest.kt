@@ -2,10 +2,11 @@ package com.matheuslutero.newsapp.core.repository
 
 import com.google.common.truth.Truth
 import com.matheuslutero.newsapp.BuildConfig
-import com.matheuslutero.newsapp.core.model.Article
-import com.matheuslutero.newsapp.core.model.ArticlesResponse
-import com.matheuslutero.newsapp.core.model.Resource
-import com.matheuslutero.newsapp.core.network.ApiService
+import com.matheuslutero.newsapp.article.domain.model.Article
+import com.matheuslutero.newsapp.article.data.dto.ArticlesResponseDto
+import com.matheuslutero.newsapp.core.domain.Resource
+import com.matheuslutero.newsapp.core.data.NewsApiService
+import com.matheuslutero.newsapp.article.data.repository.ArticleRepositoryImpl
 import java.time.Instant
 import java.time.temporal.ChronoUnit
 import java.util.Date
@@ -23,10 +24,10 @@ import org.mockito.kotlin.whenever
 class NewsRepositoryImplTest {
 
     @Mock
-    lateinit var mockService: ApiService
+    lateinit var mockService: NewsApiService
 
     @InjectMocks
-    lateinit var sut: NewsRepositoryImpl
+    lateinit var sut: ArticleRepositoryImpl
 
     @Test
     fun testGetTopHeadlines_success() = runBlocking {
@@ -37,7 +38,7 @@ class NewsRepositoryImplTest {
             Article(publishedAt = Date.from(now))
         )
         val sortedArticles = unsortedArticles.sortedByDescending { it.publishedAt }
-        val response = ArticlesResponse(unsortedArticles.size, unsortedArticles)
+        val response = ArticlesResponseDto(unsortedArticles.size, unsortedArticles)
         whenever(mockService.getTopHeadlines(any())).thenReturn(response)
 
         val result = sut.getTopHeadlines(BuildConfig.SOURCES)

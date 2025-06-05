@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/authenticationFragment"
-        android:name="com.matheuslutero.newsapp.ui.auth.AuthenticationFragment"
+        android:name="com.matheuslutero.newsapp.auth.AuthenticationFragment"
         android:label=""
         tools:layout="@layout/authentication_fragment">
         <action
@@ -37,6 +37,6 @@
         tools:layout="@layout/article_detail_fragment">
         <argument
             android:name="article"
-            app:argType="com.matheuslutero.newsapp.core.model.Article" />
+            app:argType="com.matheuslutero.newsapp.article.domain.model.Article" />
     </fragment>
 </navigation>

@@ -3,10 +3,10 @@ package com.matheuslutero.newsapp.ui.list
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.google.common.truth.Truth
-import com.matheuslutero.newsapp.core.model.Article
-import com.matheuslutero.newsapp.core.model.Resource
-import com.matheuslutero.newsapp.core.repository.NewsRepository
-import com.matheuslutero.newsapp.ui.list.viewmodel.ArticlesViewModel
+import com.matheuslutero.newsapp.article.domain.model.Article
+import com.matheuslutero.newsapp.core.domain.Resource
+import com.matheuslutero.newsapp.article.domain.repository.ArticleRepository
+import com.matheuslutero.newsapp.article.presentation.list.ArticleListViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.StandardTestDispatcher
@@ -33,14 +33,14 @@ class ArticlesViewModelTest {
     private val dispatcher = StandardTestDispatcher()
 
     @Mock
-    lateinit var mockRepository: NewsRepository
+    lateinit var mockRepository: ArticleRepository
 
-    private lateinit var sut: ArticlesViewModel
+    private lateinit var sut: ArticleListViewModel
 
     @Before
     fun setUp() {
         Dispatchers.setMain(dispatcher)
-        sut = ArticlesViewModel(mockRepository)
+        sut = ArticleListViewModel(mockRepository)
     }
 
     @Test
