@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,12 +24,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.matheuslutero.newsapp.R
+import com.matheuslutero.newsapp.core.model.Article
 import com.matheuslutero.newsapp.ui.list.viewmodel.ArticlesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ArticlesView(
-    onArticleClick: () -> Unit = {},
+    onArticleClick: (Article) -> Unit = {},
     viewModel: ArticlesViewModel = hiltViewModel()
 ) {
     val state by viewModel.listData.collectAsStateWithLifecycle()
@@ -55,8 +57,9 @@ fun ArticlesView(
                 items(state.articles) {
                     ArticleItem(
                         article = it,
-                        onClick = onArticleClick,
+                        onClick = { onArticleClick(it) }
                     )
+                    HorizontalDivider()
                 }
             }
 

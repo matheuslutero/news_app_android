@@ -1,11 +1,12 @@
 package com.matheuslutero.newsapp.ui.app
 
+import com.matheuslutero.newsapp.core.model.Article
 import kotlinx.serialization.Serializable
 
 sealed interface Route {
     @Serializable
-    object Articles
+    object Articles: Route
 
     @Serializable
-    object ArticleDetail
+    data class ArticleDetail(val article: Article): Route
 }
