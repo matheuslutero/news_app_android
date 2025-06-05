@@ -1,6 +1,6 @@
 package com.matheuslutero.newsapp.core.data.dto
 
-import com.matheuslutero.newsapp.article.domain.model.DateSerializer
+import com.matheuslutero.newsapp.article.domain.serializer.DateSerializer
 import kotlinx.serialization.Serializable
 import java.util.Date
 

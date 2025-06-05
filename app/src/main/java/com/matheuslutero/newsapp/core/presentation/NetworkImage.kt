@@ -2,7 +2,6 @@ package com.matheuslutero.newsapp.core.presentation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -16,7 +15,6 @@ fun NetworkImage(
     imageUrl: String? = null,
     contentDescription: String? = null,
     contentScale: ContentScale = ContentScale.Crop,
-    colorFilter: ColorFilter? = null,
     error: Painter? = null,
 ) {
     val imageRequest = ImageRequest.Builder(LocalContext.current)
@@ -31,7 +29,6 @@ fun NetworkImage(
         model = imageRequest,
         contentDescription = contentDescription,
         contentScale = contentScale,
-        colorFilter = colorFilter,
         error = error,
     )
 }

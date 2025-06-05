@@ -1,11 +1,7 @@
 package com.matheuslutero.newsapp.article.domain.model
 
-import kotlinx.serialization.KSerializer
+import com.matheuslutero.newsapp.article.domain.serializer.DateSerializer
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.descriptors.PrimitiveKind
-import kotlinx.serialization.descriptors.PrimitiveSerialDescriptor
-import kotlinx.serialization.encoding.Decoder
-import kotlinx.serialization.encoding.Encoder
 import java.util.Date
 
 @Serializable()
@@ -17,15 +13,3 @@ data class Article(
     @Serializable(with = DateSerializer::class)
     val publishedAt: Date? = null,
 )
-
-object DateSerializer : KSerializer<Date> {
-    override val descriptor = PrimitiveSerialDescriptor("Date", PrimitiveKind.LONG)
-
-    override fun serialize(encoder: Encoder, value: Date) {
-        encoder.encodeLong(value.time)
-    }
-
-    override fun deserialize(decoder: Decoder): Date {
-        return Date(decoder.decodeLong())
-    }
-}
