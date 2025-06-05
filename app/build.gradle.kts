@@ -102,6 +102,7 @@ dependencies {
 
     // Mockito
     testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
 
     // Retrofit
     implementation(libs.retrofit)
