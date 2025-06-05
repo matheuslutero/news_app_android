@@ -1,11 +1,14 @@
 package com.matheuslutero.newsapp.article.presentation.list
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -63,14 +66,29 @@ fun ArticleListScreen(
             }
 
             if (state.isFailed) {
-                Text(
-                    text = stringResource(R.string.retry_description),
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
+                Column(
+                    Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 20.dp)
                         .align(Alignment.Center)
-                )
+                        .padding(horizontal = 24.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.retry_description),
+                        textAlign = TextAlign.Center,
+                    )
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 8.dp),
+                        onClick = { viewModel.fetchTopHeadLines() },
+                        colors = ButtonDefaults.buttonColors(
+                            containerColor = MaterialTheme.colorScheme.secondary,
+                            contentColor = MaterialTheme.colorScheme.onSecondary
+                        )
+                    ) {
+                        Text(text = stringResource(R.string.retry_button))
+                    }
+                }
             }
 
             if (state.isLoading) {
