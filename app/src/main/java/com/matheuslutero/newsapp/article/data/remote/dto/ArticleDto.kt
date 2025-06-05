@@ -1,0 +1,25 @@
+package com.matheuslutero.newsapp.article.data.remote.dto
+
+import com.matheuslutero.newsapp.article.domain.DateSerializer
+import com.matheuslutero.newsapp.article.domain.model.Article
+import kotlinx.serialization.Serializable
+import java.util.Date
+
+data class ArticleDto(
+    val title: String? = null,
+    val description: String? = null,
+    val content: String? = null,
+    val urlToImage: String? = null,
+    @Serializable(with = DateSerializer::class)
+    val publishedAt: Date? = null,
+)
+
+fun ArticleDto.toArticle(): Article {
+    return Article(
+        title = title,
+        description = description,
+        content = content,
+        urlToImage = urlToImage,
+        publishedAt = publishedAt,
+    )
+}

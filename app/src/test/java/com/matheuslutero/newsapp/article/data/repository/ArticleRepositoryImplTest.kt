@@ -1,10 +1,10 @@
 package com.matheuslutero.newsapp.article.data.repository
 
 import com.google.common.truth.Truth.assertThat
-import com.matheuslutero.newsapp.core.data.dto.ArticleDto
-import com.matheuslutero.newsapp.core.data.dto.ArticlesResponseDto
-import com.matheuslutero.newsapp.core.data.network.NewsApiService
-import com.matheuslutero.newsapp.core.domain.Result
+import com.matheuslutero.newsapp.article.data.remote.dto.ArticleDto
+import com.matheuslutero.newsapp.article.data.remote.dto.ArticlesResponseDto
+import com.matheuslutero.newsapp.article.data.remote.api.ArticleApiService
+import com.matheuslutero.newsapp.article.domain.Result
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.test.runTest
 import org.junit.Before
@@ -22,7 +22,7 @@ import java.util.Date
 class ArticleRepositoryImplTest {
 
     @Mock
-    private lateinit var mockArticleApiService: NewsApiService
+    private lateinit var mockArticleApiService: ArticleApiService
 
     private lateinit var repository: ArticleRepositoryImpl
 
