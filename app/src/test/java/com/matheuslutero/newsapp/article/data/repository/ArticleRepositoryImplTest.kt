@@ -3,6 +3,7 @@ package com.matheuslutero.newsapp.article.data.repository
 import com.google.common.truth.Truth.assertThat
 import com.matheuslutero.newsapp.article.data.dto.ArticleDto
 import com.matheuslutero.newsapp.article.data.dto.ArticlesResponseDto
+import com.matheuslutero.newsapp.article.data.dto.toArticle
 import com.matheuslutero.newsapp.article.data.network.ArticleRemoteService
 import com.matheuslutero.newsapp.core.util.Result
 import kotlinx.coroutines.flow.toList
@@ -90,9 +91,9 @@ class ArticleRepositoryImplTest {
 
         // Verify articles are sorted by publishedAt in descending order (newest first)
         val sortedArticles = successResult.data!!
-        assertThat(sortedArticles[0].title).isEqualTo("Third Article")
-        assertThat(sortedArticles[1].title).isEqualTo("First Article")
-        assertThat(sortedArticles[2].title).isEqualTo("Second Article")
+        assertThat(sortedArticles[0]).isEqualTo(thirdArticle.toArticle())
+        assertThat(sortedArticles[1]).isEqualTo(firstArticle.toArticle())
+        assertThat(sortedArticles[2]).isEqualTo(secondArticle.toArticle())
     }
 
     @Test
