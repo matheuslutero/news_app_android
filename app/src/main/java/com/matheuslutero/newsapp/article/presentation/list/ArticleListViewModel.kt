@@ -27,10 +27,10 @@ class ArticleListViewModel @Inject constructor(
 
     fun fetchTopHeadLines() {
         viewModelScope.launch {
-            repository.getTopHeadlines(BuildConfig.SOURCES).onEach { resource ->
-                when (resource) {
+            repository.getTopHeadlines(BuildConfig.SOURCES).onEach { result ->
+                when (result) {
                     is Result.Success -> {
-                        _listData.emit(ArticleListState(articles = resource.data ?: emptyList()))
+                        _listData.emit(ArticleListState(articles = result.data!!))
                     }
 
                     is Result.Error -> {

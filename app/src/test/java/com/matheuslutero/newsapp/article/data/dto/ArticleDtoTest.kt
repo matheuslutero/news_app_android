@@ -1,12 +1,10 @@
-package com.matheuslutero.newsapp.article.data.mapper
+package com.matheuslutero.newsapp.article.data.dto
 
 import com.google.common.truth.Truth.assertThat
-import com.matheuslutero.newsapp.article.data.dto.ArticleDto
-import com.matheuslutero.newsapp.article.data.dto.toArticle
 import org.junit.Test
 import java.util.Date
 
-class ArticleMapperTest {
+class ArticleDtoTest {
 
     @Test
     fun `toArticle should correctly map all fields from ArticleDto to Article`() {
