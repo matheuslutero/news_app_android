@@ -35,7 +35,6 @@ fun ArticleItem(
                 .size(80.dp)
                 .clip(RoundedCornerShape(8.dp)),
             imageUrl = article.urlToImage,
-            placeholder = rememberVectorPainter(Icons.Outlined.Image),
             error = rememberVectorPainter(Icons.Outlined.Image),
         )
 

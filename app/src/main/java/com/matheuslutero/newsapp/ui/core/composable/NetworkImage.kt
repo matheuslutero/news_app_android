@@ -7,6 +7,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import coil.compose.AsyncImage
+import coil.request.CachePolicy
 import coil.request.ImageRequest
 
 @Composable
@@ -16,11 +17,12 @@ fun NetworkImage(
     contentDescription: String? = null,
     contentScale: ContentScale = ContentScale.Crop,
     colorFilter: ColorFilter? = null,
-    placeholder: Painter? = null,
     error: Painter? = null,
 ) {
     val imageRequest = ImageRequest.Builder(LocalContext.current)
         .data(imageUrl)
+        .diskCachePolicy(CachePolicy.ENABLED)
+        .memoryCachePolicy(CachePolicy.ENABLED)
         .crossfade(true)
         .build()
 
@@ -30,7 +32,6 @@ fun NetworkImage(
         contentDescription = contentDescription,
         contentScale = contentScale,
         colorFilter = colorFilter,
-        placeholder = placeholder,
         error = error,
     )
 }
