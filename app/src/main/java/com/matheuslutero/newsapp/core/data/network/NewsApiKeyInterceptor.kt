@@ -1,4 +1,4 @@
-package com.matheuslutero.newsapp.core.data
+package com.matheuslutero.newsapp.core.data.network
 
 import okhttp3.Interceptor
 import okhttp3.Response

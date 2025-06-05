@@ -2,7 +2,7 @@ package com.matheuslutero.newsapp.di
 
 import com.matheuslutero.newsapp.article.data.repository.ArticleRepositoryImpl
 import com.matheuslutero.newsapp.article.domain.repository.ArticleRepository
-import com.matheuslutero.newsapp.core.data.NewsApiService
+import com.matheuslutero.newsapp.core.data.network.NewsApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,8 +1,8 @@
 package com.matheuslutero.newsapp.di
 
 import com.matheuslutero.newsapp.BuildConfig
-import com.matheuslutero.newsapp.core.data.NewsApiKeyInterceptor
-import com.matheuslutero.newsapp.core.data.NewsApiService
+import com.matheuslutero.newsapp.core.data.network.NewsApiKeyInterceptor
+import com.matheuslutero.newsapp.core.data.network.NewsApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.adapters.Rfc3339DateJsonAdapter
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

@@ -1,6 +1,6 @@
-package com.matheuslutero.newsapp.core.data
+package com.matheuslutero.newsapp.core.data.network
 
-import com.matheuslutero.newsapp.article.data.dto.ArticlesResponseDto
+import com.matheuslutero.newsapp.core.data.dto.ArticlesResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

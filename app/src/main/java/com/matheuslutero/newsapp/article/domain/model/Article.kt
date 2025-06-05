@@ -13,7 +13,6 @@ data class Article(
     val title: String? = null,
     val description: String? = null,
     val content: String? = null,
-    val url: String? = null,
     val urlToImage: String? = null,
     @Serializable(with = DateSerializer::class)
     val publishedAt: Date? = null,
