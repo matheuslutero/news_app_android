@@ -6,10 +6,8 @@ plugins {
     alias(libs.plugins.hilt.android)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.navigation.safeargs)
 }
 
 val localProperties = Properties()
@@ -84,7 +82,6 @@ android {
 
 dependencies {
     // Coil
-    implementation(libs.coil)
     implementation(libs.coil.compose)
 
     // Coroutines
@@ -99,46 +96,33 @@ dependencies {
     // JUnit
     testImplementation(libs.junit)
 
-    // Material
-    implementation(libs.material)
-
     // Moshi
     implementation(libs.moshi.kotlin)
     implementation(libs.moshi.adapters)
 
     // Mockito
     testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.kotlin)
 
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.moshi)
     implementation(libs.logging.interceptor)
 
+    // Serialization
+    implementation(libs.kotlinx.serialization.json)
+
     // Truth
     testImplementation(libs.truth)
 
     // Android
     implementation(libs.androidx.activity.compose)
-    implementation(libs.activity.ktx)
-    implementation(libs.appcompat)
-    implementation(libs.biometric)
-    implementation(libs.biometric.ktx)
+    implementation(libs.androidx.biometric)
     implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.ui.graphics)
+    debugImplementation(libs.androidx.compose.ui.tooling)
+    implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.material.icons.extended)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.legacy.support.v4)
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.androidx.swiperefreshlayout)
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.kotlinx.serialization.json)
-    debugImplementation(libs.androidx.ui.tooling)
-    testImplementation(libs.androidx.core.testing)
+    implementation(libs.androidx.navigation.compose)
 }
