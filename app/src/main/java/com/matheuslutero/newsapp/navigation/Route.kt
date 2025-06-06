@@ -5,6 +5,9 @@ import kotlinx.serialization.Serializable
 
 sealed interface Route {
     @Serializable
+    object Authentication : Route
+    
+    @Serializable
     object Articles : Route
 
     @Serializable

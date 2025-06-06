@@ -9,6 +9,7 @@ import com.matheuslutero.newsapp.app.AppTheme
 import com.matheuslutero.newsapp.article.domain.model.Article
 import com.matheuslutero.newsapp.article.presentation.detail.ArticleDetailScreen
 import com.matheuslutero.newsapp.article.presentation.list.ArticleListScreen
+import com.matheuslutero.newsapp.auth.presentation.AuthenticationScreen
 import kotlin.reflect.typeOf
 
 @Composable
@@ -17,8 +18,18 @@ fun NavRoot() {
         val navController = rememberNavController()
         NavHost(
             navController = navController,
-            startDestination = Route.Articles
+            startDestination = Route.Authentication
         ) {
+            composable<Route.Authentication> {
+                AuthenticationScreen(
+                    onAuthenticationSuccess = {
+                        navController.navigate(Route.Articles) {
+                            // Clear the back stack so user can't go back to auth screen
+                            popUpTo(Route.Authentication) { inclusive = true }
+                        }
+                    }
+                )
+            }
             composable<Route.Articles> {
                 ArticleListScreen(
                     onArticleClick = {
