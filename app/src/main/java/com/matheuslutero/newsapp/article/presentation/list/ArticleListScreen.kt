@@ -1,11 +1,15 @@
 package com.matheuslutero.newsapp.article.presentation.list
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -50,18 +54,36 @@ fun ArticleListScreen(
             )
         }
     ) { innerPadding ->
-        Box(
+        BoxWithConstraints(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            LazyColumn {
-                items(state.articles) {
-                    ArticlesListItem(
-                        article = it,
-                        onClick = { onArticleClick(it) }
-                    )
-                    HorizontalDivider()
+            val boxWithConstraintsScope = this
+            val useGridLayout = boxWithConstraintsScope.maxWidth > 600.dp
+
+            if (useGridLayout) {
+                LazyVerticalGrid(
+                    columns = GridCells.Adaptive(minSize = 300.dp),
+                    contentPadding = PaddingValues(16.dp),
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(state.articles) { article ->
+                        ArticleGridItem(
+                            article = article,
+                            onClick = { onArticleClick(article) }
+                        )
+                    }
+                }
+            } else {
+                LazyColumn {
+                    items(state.articles) { article ->
+                        ArticlesListItem(
+                            article = article,
+                            onClick = { onArticleClick(article) }
+                        )
+                        HorizontalDivider()
+                    }
                 }
             }
 
