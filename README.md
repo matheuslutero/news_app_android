@@ -1,21 +1,31 @@
 # News App
 
-This is a simple news app that uses the [News API](https://newsapi.org/) to fetch news articles from
-BBC News sources.
-It is built using the [MVVM architecture](https://developer.android.com/jetpack/docs/guide)
-and [Android Jetpack](https://developer.android.com/jetpack).
+An Android news application built with **Jetpack Compose** and **Clean Architecture** that fetches news articles from BBC News sources using the [News API](https://newsapi.org/).
 
 ## Getting Started
 
-Register for an API key from [News API](https://newsapi.org/register) and set up your key
-in the `local.properties` file as follows:
-
+### Setup
+1. Register for an API key at [News API](https://newsapi.org/register)
+2. Create a `local.properties` file in the root directory:
+```properties
+API_KEY=YOUR_API_KEY_HERE
 ```
-API_KEY=YOUR_API_KEY
-```
+3. Build and run the project
 
-You can build `news` or `sports` flavor to get news from `BBC News` or `BBC Sport`
-respectively.
+### Build Variants
+- **`news`** - General news from BBC News
+- **`sports`** - Sports news from BBC Sport
+
+## Tech Stack
+
+- **UI**: Jetpack Compose, Material 3
+- **Architecture**: MVVM, Clean Architecture
+- **DI**: Dagger Hilt
+- **Networking**: Retrofit, OkHttp
+- **JSON**: Moshi
+- **Navigation**: Navigation Compose
+- **Authentication**: AndroidX Biometric
+- **Coroutines**: Kotlin Coroutines & Flow
 
 ## Screenshots
 
