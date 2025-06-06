@@ -1,9 +1,11 @@
 <resources>
     <string name="authentication_description">Authentication required, please sign in with your biometrics</string>
+    <string name="authentication_failed_please_try_again">Authentication failed. Please try again.</string>
     <string name="authentication_sign_in">Sign in</string>
-    <string name="biometric_title">Biometric authentication</string>
-    <string name="biometric_subtitle">Confirm your biometric to proceed</string>
-    <string name="retry_description">Uh-oh! Something went wrong.\nPlease check your connection and try again.</string>
-    <string name="retry_button">Retry</string>
     <string name="back">Back</string>
+    <string name="biometric_subtitle">Confirm your biometric to proceed</string>
+    <string name="biometric_title">Biometric authentication</string>
+    <string name="cancel">Cancel</string>
+    <string name="retry_button">Retry</string>
+    <string name="retry_description">Uh-oh! Something went wrong.\nPlease check your connection and try again.</string>
 </resources>
