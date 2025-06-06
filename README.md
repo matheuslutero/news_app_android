@@ -8,7 +8,7 @@ An Android news application built with **Jetpack Compose** and **Clean Architect
 1. Register for an API key at [News API](https://newsapi.org/register)
 2. Create a `local.properties` file in the root directory:
 ```properties
-API_KEY=YOUR_API_KEY_HERE
+newsApiKey=YOUR_API_KEY_HERE
 ```
 3. Build and run the project
 
